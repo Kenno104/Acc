@@ -25,13 +25,14 @@ with col2:
 # divider
 st.markdown("<hr style='background-color:black;'>", unsafe_allow_html=True)
 
+############## DEMO INTRO
 col1, col2 = st.columns(2)
 with col1:
   st.markdown("<h3 style='color: #F39A68;'>What is the Purpose of this Demo?</h3>", unsafe_allow_html=True)
   
   st.markdown("<h5> Acclimatise aims to give customers specific enery solutions that cater for their circumstances. <br> It will take time to build out this functionality, and different customers will benefit from some features and products more than others. Therefore, the purpose of this demo is to introduce the general concept behind Acclimatise and convey the intended user experience with a simple but familiar use case.</h5>", unsafe_allow_html=True)
 
-  st.markdown("<h3 style='color: #F39A68;'>Choosing the Optimum Electricity Supplier for your Energy Needs</h3>", unsafe_allow_html=True)
+  st.markdown("<h3 style='color: #F39A68;'>Use Case Example: Choosing the Optimum Electricity Supplier for your Energy Needs</h3>", unsafe_allow_html=True)
   
   st.markdown("<h5> With the roll-out of smart meters and night-saver tariffs in Ireland the task of choosing the best value electricity rate is no longer as simple as it once was. Choosing the optimum rate now requires an understanding of your daily energy usage habits and a more detailed cost-comparison process. </a> <br><br> For the purpose of this demo, we'll take approximately 2 months of a household's electricity data over the December-January period, shown below, and use this to obtain the optimum energy tariff for this specific house. <br> If you would like to view the electricity consumption of your own home, you can access the smater meter readings for your house <a href='https://myaccount.esbnetworks.ie/''>here.</h5>", unsafe_allow_html=True)
              
@@ -137,7 +138,8 @@ with col3: #Percentage Peak-Time Energy
 # divider
 st.markdown("<hr style='background-color:black;'>", unsafe_allow_html=True)
 
-#Customer Actions
+###############Customer Actions################
+
 st.markdown("<h2 style='text-align: center; color: #FFFFFF;'>Recommended Actions<br><br></h2>", unsafe_allow_html=True)
 
 st.markdown("<h4 style= 'color: #FFFFFF;'>Under your current plan: <span style= 'color: #0075B0;'> Electric Ireland - Home Electric+</span>, we estimate your next bi-monthly bill to be approx. <span style= 'color: #AF4F41;' > €430.</span><br></h4>", unsafe_allow_html=True)
