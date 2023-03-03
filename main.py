@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-url: 'https://forms.gle/uSaFmv8ZNv33yyd78'
+# url: 'https://forms.gle/uSaFmv8ZNv33yyd78'
 
 #Page Configuration
 st.set_page_config(page_title='Acclimatise Demo',
