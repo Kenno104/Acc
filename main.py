@@ -14,13 +14,7 @@ with col2:
 
   st.markdown("<h1 style='text-align: center; color: #FFFFFF;'>Welcome to the Acclimatise Demo</h1>", unsafe_allow_html=True)
   
-  st.markdown("<h4 style = 'text-align: center;'>This page will host the latest developments in the production of the Acclimatise MVP. <br> We hope to update it regularly as more functionality and interactivity is incorporated. <br> <br> Currently, the purpose of this demo is to convey a familiar and intuitive use case for the Acclimatise platform by exhibiting how users can choose the right utility bill for their energy usage habits. <br><br> This is currently a static display, however if you wish to be notified when the first dynamic iteration is available, we'd appreciate you joining the waiting list below!<br><br> </h4>", unsafe_allow_html=True)
-  
-  col1, col2, col3 = st.columns(3)
-  
-  with col2:
-    # st.button('Join Waitlist'): #maybe add email box here (faster)
-    st.markdown("<h3> <a href='https://forms.gle/uSaFmv8ZNv33yyd78'>Join Waitlist</h3>", unsafe_allow_html=True)
+  st.markdown("<h4 style = 'text-align: center;'>This page will host the latest developments in the production of the Acclimatise MVP. <br> We hope to update it regularly as more functionality and interactivity is incorporated. <br> <br> Currently, the purpose of this demo is to convey a familiar and intuitive use case for the Acclimatise platform by exhibiting how users can choose the right utility bill for their energy usage habits.</h4>", unsafe_allow_html=True)
 
 # divider
 st.markdown("<hr style='background-color:black;'>", unsafe_allow_html=True)
