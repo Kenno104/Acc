@@ -25,15 +25,15 @@ with col1:
   st.markdown("<h3 style='color: #F39A68;'>What is the Purpose of this Demo?</h3>", unsafe_allow_html=True)
   
   st.markdown("<h5> Acclimatise aims to give customers specific enery solutions that cater for their circumstances. <br> It will take time to build out this functionality, and different customers will benefit from some features and products more than others. Therefore, the purpose of this demo is to introduce the general concept behind Acclimatise and convey the intended user experience with a simple but familiar use case.</h5>", unsafe_allow_html=True)
-
-  st.markdown("<h3 style='color: #F39A68;'>Use Case Example: Choosing the Optimum Electricity Supplier for your Energy Needs</h3>", unsafe_allow_html=True)
-  
-  st.markdown("<h5> With the roll-out of smart meters and night-saver tariffs in Ireland the task of choosing the best value electricity rate is no longer as simple as it once was. Choosing the optimum rate now requires an understanding of your daily energy usage habits and a more detailed cost-comparison process. </a> <br><br> For the purpose of this demo, we'll take approximately 2 months of a household's electricity data over the December-January period, shown below, and use this to obtain the optimum energy tariff for this specific house. <br> If you would like to view the electricity consumption of your own home, you can access the smater meter readings for your house <a href='https://myaccount.esbnetworks.ie/''>here.</h5>", unsafe_allow_html=True)
-             
+      
 with col2:
   image2 = Image.open('esb.jpg')
   st.image(image2, caption='ESB Smart Meter Account')
 
+st.markdown("<h3 style='color: #F39A68;'><center><b>Example Use Case:</b> Choosing the Optimum Electricity Supplier for your Energy Circumstances</center></h3>", unsafe_allow_html=True)
+  
+st.markdown("<h5> With the roll-out of smart meters and night-saver tariffs in Ireland the task of choosing the best value electricity rate is no longer as simple as it once was. Choosing the optimum rate now requires an understanding of your daily energy usage habits and a more detailed cost-comparison process. </a> <br><br> For the purpose of this demo, we'll take approximately 2 months of a household's electricity data over the December-January period, shown below, and use this to obtain the optimum energy tariff for this specific house. <br> If you would like to view the electricity consumption of your own home, you can access the smater meter readings for your house <a href='https://myaccount.esbnetworks.ie/''>here.</h5>", unsafe_allow_html=True)
+       
 ######## Data Manipulation ############
 
 #Initialise df
@@ -44,8 +44,8 @@ df = df.rename(columns={"Read Value": "Power", "Read Date & Time": "Time"})
 df['Time'] = df['Time'].astype('string')
 df['Time'] = pd.to_datetime(df['Time'], format = '%d-%m-%Y %H:%M')
 
-df['Energy'] = df['Power'] * 0.5
-df['Current_Cost(€)'] = df['Energy'] * 0.4089
+df['Energy (kWh)'] = df['Power'] * 0.5
+df['Current_Cost(€)'] = df['Energy (kWh)'] * 0.4089
 df['Night_Energy'] = 0
 df['Night_Rate(€)'] = 0
 df['Peak_Energy'] = 0
@@ -57,8 +57,8 @@ for i in range(len(df)):
   x = x[-8:-6]
   x = int(x)
   if x >= 22 or x <= 8:
-    df['Night_Energy'].iloc[i] = df['Energy'].iloc[i]
-    df['Night_Rate(€)'].iloc[i] = df['Energy'].iloc[i] * 0.2339
+    df['Night_Energy'].iloc[i] = df['Energy (kWh)'].iloc[i]
+    df['Night_Rate(€)'].iloc[i] = df['Energy (kWh)'].iloc[i] * 0.2339
 
 #Get Peak Data
 for i in range(len(df)):
@@ -66,13 +66,13 @@ for i in range(len(df)):
   x = x[-8:-6]
   x = int(x)
   if x >= 17 and x <= 19:
-    df['Peak_Energy'].iloc[i] = df['Energy'].iloc[i]
-    df['Peak_Rate(€)'].iloc[i] = df['Energy'].iloc[i] * 0.4746
+    df['Peak_Energy'].iloc[i] = df['Energy (kWh)'].iloc[i]
+    df['Peak_Rate(€)'].iloc[i] = df['Energy (kWh)'].iloc[i] * 0.4746
 
 #Values to Calculate:
 #Total Consumption:
 #Final Values
-total_energy = int(df['Energy'].sum())
+total_energy = int(df['Energy (kWh)'].sum())
 total_night_energy = int(df['Night_Energy'].sum())
 total_current_cost = int(df['Current_Cost(€)'].sum())
 total_night_cost = int(df['Night_Rate(€)'].sum())
@@ -87,15 +87,12 @@ peak_percentage = int((total_peak_energy / total_energy)*100)
 df.set_index('Time', inplace=True)
 
 with st.container():
-  st.line_chart(df['Energy'])
+  st.line_chart(df['Energy (kWh)'])
 
 #Data Analysis Explanation
-col1, col2 = st.columns(2)
-with col1:
-  
-  st.markdown("<h3 style='color: #F39A68;'>Analysing your Home Energy Consumption</h3>", unsafe_allow_html=True)
-  
-  st.markdown("<h5> By leveraging the data provided by smart meters, a number of customer-specific insights can be inferred to inform users of their energy usage habits. This information can then be used to evaluate what energy solutions may be feasible for the specific customer. <br> In this case, we are identifying the optimal electricity tariff for a particular customer. <br><br> Shown below is a typical customer dashboard that can be created from a simple analysis of the given data. As this demo develops in the coming months, we aim to incorporate more detailed analytics and allow users to run an analysis of the data from their own homes as well. </h5>", unsafe_allow_html=True)
+st.markdown("<h3 style='color: #F39A68;'>Analysing your Home Energy Consumption</h3>", unsafe_allow_html=True)
+
+st.markdown("<h5> By leveraging the data provided by smart meters, a number of customer-specific insights can be inferred to inform users of their energy usage habits. This information can then be used to evaluate what energy solutions may be feasible for the specific customer. <br> In this case, we are identifying the optimal electricity tariff for a particular customer. <br><br> Shown below is a typical customer dashboard that can be created from a simple analysis of the given data. As this demo develops in the coming months, we aim to incorporate more detailed analytics and allow users to analyse their own energy data as well. </h5>", unsafe_allow_html=True)
 
 # divider
 st.markdown("<hr style='background-color:black;'>", unsafe_allow_html=True)
